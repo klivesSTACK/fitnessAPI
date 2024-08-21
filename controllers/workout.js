@@ -4,7 +4,7 @@ const Workout = require('../models/Workout');
 module.exports.addWorkout =  (req, res) => {
 
     // instantite new workout
-    let newWorkout = new WorkOut({
+    let newWorkout = new Workout({
         userId: req.user.id,
         name: req.body.name,
         duration: req.body.duration
