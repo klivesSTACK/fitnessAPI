@@ -1,6 +1,4 @@
-const User = require("../models/User");
-const auth = require('../auth');
-const WorkOut = require("../models/WorkOut");
+const WorkOut =require('./models/WorkOut');
 
 // add workout endoint
 module.exports.addWorkout =  (req, res) => {
