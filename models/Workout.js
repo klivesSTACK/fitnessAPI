@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const workoutSchema = new mongoose.Schema({
+const workOutSchema = new mongoose.Schema({
     userId:{
         type: String,
         required: [true, 'Id of user is required']
@@ -23,4 +23,4 @@ const workoutSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Workout', workoutSchema);
+module.exports = mongoose.model('WorkOut', workOutSchema);
