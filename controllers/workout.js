@@ -1,4 +1,4 @@
-const WorkOut =require('./models/WorkOut');
+const Workout = require('../models/Workout');
 
 // add workout endoint
 module.exports.addWorkout =  (req, res) => {
@@ -11,7 +11,7 @@ module.exports.addWorkout =  (req, res) => {
     });
 
     // scan workout database
-    WorkOut.findOne({ name: req.body.name, userId: req.user.id }).then(workoutExist => {
+    Workout.findOne({ name: req.body.name, userId: req.user.id }).then(workoutExist => {
         // if workout name already exist in database
         if(workoutExist){
             return res.status(409).send({ message: 'Workout already listed'})
@@ -29,7 +29,7 @@ module.exports.addWorkout =  (req, res) => {
 module.exports.getMyWorkouts = (req, res) => {
 
     //scan and fine all workout in database
-    WorkOut.find({ userId: req.user.id }).then(result => {
+    Workout.find({ userId: req.user.id }).then(result => {
         //return response from database
         return res.status(200).send({ workouts: result})
     }).catch(err => errorHandler(err, req, res));
@@ -51,7 +51,7 @@ module.exports.updateWorkout = (req, res ) => {
     }
 
     // scan the database and update
-    WorkOut.findByIdAndUpdate( id, updatedWorkout, { new: true} )
+    Workout.findByIdAndUpdate( id, updatedWorkout, { new: true} )
     .then(result => {
         // if successfull
         if(result){
@@ -74,7 +74,7 @@ module.exports.deleteWorkout = (req, res) => {
     const id = req.params.workoutId;
 
     // Scan and delete workout in database
-    WorkOut.findByIdAndDelete(id, {new: true}).then( deleted =>{
+    Workout.findByIdAndDelete(id, {new: true}).then( deleted =>{
 
         // if success
         if(deleted){
@@ -92,7 +92,7 @@ module.exports.completeWorkoutStatus = ( req, res ) => {
 
     const id = req.params.workoutId;
 
-    WorkOut.findByIdAndUpdate( id, { status: 'completed' }, { new: true}).then( completed => {
+    Workout.findByIdAndUpdate( id, { status: 'completed' }, { new: true}).then( completed => {
         if(completed){
             return res.status(200).send({ 
                 message: 'Workout status updated successfully',
