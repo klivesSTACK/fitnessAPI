@@ -21,7 +21,7 @@ module.exports.addWorkout =  (req, res) => {
                 res.status(201).send({workout})
             }).catch(err => errorHandler(err, req, res));
         }
-    })
+    }).catch(err => errorHandler(err, req, res));
 
 } 
 
@@ -30,6 +30,18 @@ module.exports.getMyWorkouts = (req, res) => {
 
     //scan and fine all workout in database
     Workout.find({ userId: req.user.id }).then(result => {
+        //return response from database
+        return res.status(200).send({ workouts: result})
+    }).catch(err => errorHandler(err, req, res));
+}
+
+module.exports.getWorkout = (req, res) => {
+
+    // initialize 
+    const id = req.params.workoutId;
+
+    //scan and fine all workout in database
+    Workout.findById(id).then(result => {
         //return response from database
         return res.status(200).send({ workouts: result})
     }).catch(err => errorHandler(err, req, res));
