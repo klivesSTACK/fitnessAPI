@@ -24,7 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
 
     //client/Frontend application URL
-    origin: ['http://localhost:3000'],
+    origin: [
+        'http://localhost:3000',
+        'https://fitness-client-ep7udqc5l-larrys-projects-8f15cfd4.vercel.app'],
     // Allow only specified headers
     credentials: true,
     // Allow only specified HTTP methods
