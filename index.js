@@ -26,7 +26,8 @@ const corsOptions = {
     //client/Frontend application URL
     origin: [
         'http://localhost:3000',
-        'https://fitness-client-mm6zs8cm0-larrys-projects-8f15cfd4.vercel.app'],
+        'https://fitness-client-mm6zs8cm0-larrys-projects-8f15cfd4.vercel.app',
+    'https://fitness-client-amber.vercel.app'],
     // Allow only specified headers
     credentials: true,
     // Allow only specified HTTP methods
